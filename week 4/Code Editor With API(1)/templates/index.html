@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monaco Code Editor</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        #controls {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            background: #f7f7f7;
+            border-bottom: 1px solid #ccc;
+        }
+        #main {
+            display: flex;
+            flex: 1;
+        }
+        #editor-section, #output-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+        }
+        #editor {
+            flex: 1;
+            border: 1px solid #ccc;
+        }
+        #output {
+            flex: 1;
+            border: 1px solid #ccc;
+            background: #f7f7f7;
+            white-space: pre-wrap;
+            padding: 10px;
+            margin-top: 10px;
+            overflow-y: auto;
+        }
+        select, button {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="controls">
+        <select id="language-select">
+            <option value="c">C</option>
+            <option value="cpp">C++</option>
+            <option value="java">Java</option>
+            <option value="python">Python</option>
+            <option value="sql">SQL</option>
+        </select>
+        <div>
+            <button onclick="saveCode()">Save Code</button>
+            <button onclick="runCode()">Run Code</button>
+        </div>
+    </div>
+    <div id="main">
+        <div id="editor-section">
+            <h2>Code Editor</h2>
+            <div id="editor"></div>
+        </div>
+        <div id="output-section">
+            <h2>Output</h2>
+            <div id="output"></div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.31.1/min/vs/loader.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
